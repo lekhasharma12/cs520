@@ -1,15 +1,10 @@
 package controller;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.JPanel;
-import java.awt.*;
-import java.awt.event.*;
 
 import model.RowGameModel;
 import model.Player;
-import view.BlockIndex;
+import model.BlockIndex;
 import view.RowGameGUI;
 
 public class RowGameController {
@@ -43,6 +38,7 @@ public class RowGameController {
 	gameModel.movesLeft--;
 
 	BlockIndex blockIndex = gameView.getBlockIndex(block);
+	gameModel.pushToMoveHistory(blockIndex);
 	if(gameModel.getPlayer().equals(Player.PLAYER_1)) {
 	    // Check whether player 1 won
 	    if(blockIndex.matches(0, 0)) {
@@ -382,4 +378,21 @@ public class RowGameController {
 	// The Controller then updates the View.
 	gameView.update(gameModel);
     }
+
+	public void undoMove() {
+		// The Controller first manipulates the Model.
+		BlockIndex blockToClear = gameModel.popFromMoveHistory();
+		int row = blockToClear.getRow();
+		int column = blockToClear.getColumn();
+		gameModel.blocksData[row][column].reset();
+		gameModel.blocksData[row][column].setIsLegalMove(true);
+		gameModel.movesLeft += 1;
+		if(gameModel.movesLeft%2 == 1) {
+			gameModel.setPlayer(Player.PLAYER_1);
+		} else{
+			gameModel.setPlayer(Player.PLAYER_2);
+		}
+		// The Controller then updates the View.
+		gameView.update(gameModel);
+	}
 }

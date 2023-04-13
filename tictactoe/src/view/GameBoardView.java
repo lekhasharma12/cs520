@@ -1,6 +1,7 @@
 package view;
 
 import controller.RowGameController;
+import model.BlockIndex;
 import model.RowGameModel;
 
 import java.awt.event.ActionEvent;

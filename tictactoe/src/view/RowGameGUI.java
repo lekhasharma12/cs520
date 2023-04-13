@@ -2,13 +2,13 @@ package view;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.BlockIndex;
 import model.RowGameModel;
 import controller.RowGameController;
 
@@ -49,6 +49,9 @@ public class RowGameGUI implements View {
 	GameStatusView gameStatusView = new GameStatusView(messages);
 	addView(gameStatusView);
 
+    UndoView undo = new UndoView(options, controller);
+    addView(undo);
+
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 controller.resetGame();
@@ -57,6 +60,8 @@ public class RowGameGUI implements View {
 
 	this.gameBoardView = new GameBoardView(game, controller);
 	addView(this.gameBoardView);
+
+
     }
 
     public BlockIndex getBlockIndex(JButton block) {
