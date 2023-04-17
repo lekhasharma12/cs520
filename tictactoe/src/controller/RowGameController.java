@@ -1,7 +1,5 @@
 package controller;
 
-import javax.swing.JButton;
-
 import model.RowGameModel;
 import model.Player;
 import model.BlockIndex;
@@ -31,13 +29,12 @@ public class RowGameController {
     /**
      * Moves the current player into the given block.
      *
-     * @param block The block to be moved to by the current player
+     * @param blockIndex The blockIndex to be moved to by the current player
      */
-    public void move(JButton block) {
+    public void move(BlockIndex blockIndex) {
 	// The Controller first manipulates the Model.
 	gameModel.movesLeft--;
 
-	BlockIndex blockIndex = gameView.getBlockIndex(block);
 	gameModel.pushToMoveHistory(blockIndex);
 	if(gameModel.getPlayer().equals(Player.PLAYER_1)) {
 	    // Check whether player 1 won
@@ -379,6 +376,9 @@ public class RowGameController {
 	gameView.update(gameModel);
     }
 
+	/**
+	 * Allows player to undo the last move played if game has not ended.
+	 */
 	public void undoMove() {
 		// The Controller first manipulates the Model.
 		BlockIndex blockToClear = gameModel.popFromMoveHistory();
