@@ -7,9 +7,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The UndoView class visualizes the undo button of the game
+ *
+ * NOTE) For the Composite design pattern, this class is-a Component (i.e. View).
+ */
 public class UndoView implements View {
 
-    public JButton undo;
+    private JButton undo;
 
     public UndoView(JPanel options, RowGameController controller) {
         this.undo = new JButton("Undo");
@@ -20,6 +25,10 @@ public class UndoView implements View {
                 controller.undoMove();
             }
         });
+    }
+
+    public boolean getUndoButtonStatus() {
+        return undo.isEnabled();
     }
 
     @Override
