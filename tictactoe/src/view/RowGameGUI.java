@@ -91,4 +91,9 @@ public class RowGameGUI implements View {
 	    currentView.update(model);
 	} // end for currentView
     }
+
+    // getter for gameBoardView - added for view testing
+    public GameBoardView getBoardView() {
+        return gameBoardView;
+    }
 }

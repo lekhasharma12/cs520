@@ -81,4 +81,9 @@ public class GameBoardView implements View
 	    } // end for col
 	} // end for row
     }
+
+    // to check if the button is enabled - for testing
+    public Boolean isBlockEnabled(BlockIndex blockIndex){
+        return blocks[blockIndex.getRow()][blockIndex.getColumn()].isEnabled();
+    }
 } // end for GameBoardView
