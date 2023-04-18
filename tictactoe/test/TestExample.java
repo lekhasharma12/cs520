@@ -62,4 +62,5 @@ public class TestExample {
         assertEquals(true, game.gameModel.blocksData[0][0].getIsLegalMove());
         assertEquals(game.gameView.getUndoStatus(), false);
     }
+
 }
