@@ -32,6 +32,12 @@ public class RowGameController {
      * @param blockIndex The blockIndex to be moved to by the current player
      */
     public void move(BlockIndex blockIndex) {
+	
+	// check if its a legal move before updating the model.
+	if (!gameModel.blocksData[blockIndex.getRow()][blockIndex.getColumn()].getIsLegalMove()){
+		return;
+	}
+
 	// The Controller first manipulates the Model.
 	gameModel.movesLeft--;
 
