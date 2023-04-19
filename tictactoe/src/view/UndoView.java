@@ -35,7 +35,7 @@ public class UndoView implements View {
     public void update(RowGameModel model) {
         if(model.movesLeft==9 || model.getFinalResult()!=null){
             this.undo.setEnabled(false);
-        } else if(!model.getMoveHistory().isEmpty()){
+        } else if(!model.checkIfMoveHistoryIsEmpty()){
             this.undo.setEnabled(true);
         }
     }
