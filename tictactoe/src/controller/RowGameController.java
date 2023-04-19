@@ -387,8 +387,9 @@ public class RowGameController {
 	 */
 	public void undoMove() {
 		// The Controller first manipulates the Model.
-		int row = gameModel.popRowFromMoveHistory();
-		int column = gameModel.popColumnFromMoveHistory();
+		BlockIndex blockToClear = gameModel.popFromMoveHistory();
+		int row = blockToClear.getRow();
+		int column = blockToClear.getColumn();
 		gameModel.blocksData[row][column].reset();
 		gameModel.blocksData[row][column].setIsLegalMove(true);
 		gameModel.movesLeft += 1;

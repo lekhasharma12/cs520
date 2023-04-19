@@ -63,11 +63,8 @@ public class RowGameModel
         this.moveHistory.push(move);
     }
 
-    public int popRowFromMoveHistory() {
-        return this.moveHistory.pop().getRow();
+    public BlockIndex popFromMoveHistory() {
+        return this.moveHistory.pop();
     }
 
-    public int popColumnFromMoveHistory() {
-        return this.moveHistory.pop().getColumn();
-    }
 }
