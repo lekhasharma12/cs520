@@ -27,10 +27,12 @@ public class UndoView implements View {
         });
     }
 
+    // Fetches if undo button is enabled or disabled
     public boolean getUndoButtonStatus() {
         return undo.isEnabled();
     }
 
+    // Enables and disables the undo button based on the given conditions 
     @Override
     public void update(RowGameModel model) {
         if(model.movesLeft==9 || model.getFinalResult()!=null){

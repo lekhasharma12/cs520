@@ -69,10 +69,6 @@ public class RowGameGUI implements View {
 	return this.gameBoardView.getBlockIndex(block);
     }
 
-    public boolean getUndoStatus() {
-        return undo.getUndoButtonStatus();
-    }
-
     public void addView(View view) {
 	// For the Composite API
 	
@@ -92,8 +88,19 @@ public class RowGameGUI implements View {
 	} // end for currentView
     }
 
+    // Fetches the status of undo button - for testing
+    public boolean getUndoStatus() {
+        return undo.getUndoButtonStatus();
+    }
+
     // getter for gameBoardView - added for view testing
     public GameBoardView getBoardView() {
         return gameBoardView;
     }
+
+    // Fetches the status of the given block - for testing
+    public boolean getBlockStatus(BlockIndex blockIndex) {
+        return gameBoardView.isBlockEnabled(blockIndex);
+    }
+
 }

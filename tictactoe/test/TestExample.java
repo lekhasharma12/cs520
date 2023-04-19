@@ -74,7 +74,7 @@ public class TestExample {
         assertEquals(true, game.gameModel.blocksData[1][1].getIsLegalMove());
         assertEquals(false,game.gameView.getUndoStatus());
         //View- testing
-        assertTrue("Button for 1,1 should be enabled", game.gameView.getBoardView().isBlockEnabled(new BlockIndex(1, 1)));
+        assertTrue("Button for 1,1 should be enabled", game.gameView.getBlockStatus(new BlockIndex(1, 1)));
 
 
         
@@ -95,7 +95,7 @@ public class TestExample {
         assertEquals("X", game.gameModel.blocksData[1][1].getContents());
 
         // testing View
-        assertFalse("Button for 1,1 should be disabled", game.gameView.getBoardView().isBlockEnabled(new BlockIndex(1, 1)));
+        assertFalse("Button for 1,1 should be disabled", game.gameView.getBlockStatus(new BlockIndex(1, 1)));
     }
 
     @Test
@@ -189,7 +189,7 @@ public class TestExample {
             for (int col = 0; col < 3; col++) {
                 assertEquals("", game.gameModel.blocksData[row][col].getContents());
                 assertEquals(true, game.gameModel.blocksData[row][col].getIsLegalMove());
-                assertTrue("All block buttons should be enabled", game.gameView.getBoardView().isBlockEnabled(new BlockIndex(row, col)));
+                assertTrue("All block buttons should be enabled", game.gameView.getBlockStatus(new BlockIndex(row, col)));
             } 
         }
     }
