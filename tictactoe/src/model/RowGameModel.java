@@ -51,8 +51,8 @@ public class RowGameModel
 	this.finalResult = finalResult;
     }
 
-    public Stack<BlockIndex> getMoveHistory() {
-        return moveHistory;
+    public boolean checkIfMoveHistoryIsEmpty() {
+        return moveHistory.isEmpty();
     }
 
     public void setMoveHistory(Stack<BlockIndex> moveHistory) {
@@ -63,7 +63,11 @@ public class RowGameModel
         this.moveHistory.push(move);
     }
 
-    public BlockIndex popFromMoveHistory() {
-        return this.moveHistory.pop();
+    public int popRowFromMoveHistory() {
+        return this.moveHistory.pop().getRow();
+    }
+
+    public int popColumnFromMoveHistory() {
+        return this.moveHistory.pop().getColumn();
     }
 }
